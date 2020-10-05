@@ -33,7 +33,7 @@ class Level {
         for r in 0 ..< self.height {
             var row: [Block] = []
             for c in 0 ..< self.width {
-                let airBlock = Block(x: r, y: c, type: .air, scene: scene, levelHeight: self.height)
+                let airBlock = Block(x: r, y: c, type: .air, scene: scene, levelDim: (self.width, self.height))
                 row.append(airBlock)
             }
             self.grid.append(row)
@@ -41,20 +41,20 @@ class Level {
         var numBlocksInFinishedDam = 0
         //Add in all logs
         for logPos in logs {
-            let log = Block(x: logPos.x + 1, y: logPos.y, type: .log, scene: scene, levelHeight: self.height)
+            let log = Block(x: logPos.x + 1, y: logPos.y, type: .log, scene: scene, levelDim: (self.width, self.height))
             self.grid[log.x][log.y] = log
             numBlocksInFinishedDam += 1
         }
         //Add in all rocks
         for rockPos in rocks {
-            let rock = Block(x: rockPos.x + 1, y: rockPos.y, type: .rock, scene: scene, levelHeight: self.height)
+            let rock = Block(x: rockPos.x + 1, y: rockPos.y, type: .rock, scene: scene, levelDim: (self.width, self.height))
             self.grid[rock.x][rock.y] = rock
             numBlocksInFinishedDam += 1
         }
         //Calculate where the top row of the dam should be when finished
         self.topOfDam = self.height - numBlocksInFinishedDam / self.width
         //Keep a reference to the player and add it to the grid
-        self.player = Player(x: beaver.x + 1, y: beaver.y, direction: .right, hasLog: false, scene: scene, levelHeight: self.height)
+        self.player = Player(x: beaver.x + 1, y: beaver.y, direction: .right, hasLog: false, scene: scene, levelDim: (self.width, self.height))
         self.grid[player.x][player.y] = self.player
         self.id = levelData.id
     }

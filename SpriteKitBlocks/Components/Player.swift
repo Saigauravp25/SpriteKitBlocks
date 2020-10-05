@@ -12,10 +12,10 @@ class Player: Block {
     var direction: Direction
     var hasLog: Bool
     
-    init(x:Int, y:Int, direction:Direction, hasLog:Bool, scene:SKScene, levelHeight:Int) {
+    init(x:Int, y:Int, direction:Direction, hasLog:Bool, scene:SKScene, levelDim: (width:Int, height:Int)) {
         self.direction = direction
         self.hasLog = hasLog
-        super.init(x: x, y: y, type: .beaver, scene: scene, levelHeight: levelHeight)
+        super.init(x: x, y: y, type: .beaver, scene: scene, levelDim: levelDim)
     }
     
     required init?(coder aDecoder: NSCoder) {

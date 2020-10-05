@@ -17,6 +17,35 @@ class GameScene: SKScene {
         self.backgroundColor = UIColor(hex: 0xB3E5FC)
         self.setupNodes()
         level = Level(levelData: self.getLevelData(), for: self)
+        addSwipe()
+    }
+    
+    func addSwipe() {
+        let directions: [UISwipeGestureRecognizer.Direction] = [.right, .left, .up, .down]
+        for direction in directions {
+            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+            gesture.direction = direction
+            self.view!.addGestureRecognizer(gesture)// self.view
+        }
+    }
+
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+        let direction = sender.direction
+        switch direction {
+            case .right:
+                _ = self.level?.movePlayer(direction: .right)
+                print("Gesture direction: Right")
+            case .left:
+                _ = self.level?.movePlayer(direction: .left)
+                print("Gesture direction: Left")
+            case .up:
+                print("Gesture direction: Up")
+            case .down:
+                _ = self.level?.playerToggleCarryLog()
+                print("Gesture direction: Down")
+            default:
+                print("Unrecognized Gesture Direction")
+        }
     }
 }
 

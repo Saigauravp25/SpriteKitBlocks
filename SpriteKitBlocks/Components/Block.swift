@@ -9,16 +9,26 @@ import SpriteKit
 
 //Representation of each block in the game grid
 class Block: SKSpriteNode {
-    var x: Int
-    var y: Int
+    var x: Int {
+        didSet {
+            self.updateBlock(in: self.skScene)
+        }
+    }
+    var y: Int {
+        didSet {
+            self.updateBlock(in: self.skScene)
+        }
+    }
     var type: BlockType
-    var levelHeight: Int
+    var levelDimensions: (width:Int, height:Int)
+    var skScene: SKScene
     
-    init(x:Int, y:Int, type:BlockType, scene:SKScene, levelHeight:Int) {
+    init(x:Int, y:Int, type:BlockType, scene:SKScene, levelDim:(width:Int, height:Int)) {
         self.x = x
         self.y = y
         self.type = type
-        self.levelHeight = levelHeight
+        self.levelDimensions = levelDim
+        self.skScene = scene
         let imageName = self.type == .log ? "log" : (self.type == .rock ? "rock" : (self.type == .beaver ? "beaverRight" : "air"))
         let texture = SKTexture(imageNamed: imageName)
         super.init(texture: texture, color: .clear, size: texture.size())
@@ -33,7 +43,7 @@ class Block: SKSpriteNode {
     }
     
     func getBlockPosition() -> (Int, Int) {
-        return (self.y, self.levelHeight - self.x - 1)
+        return (self.y, self.levelDimensions.height - self.x - 1)
     }
     
     //For debugging
@@ -64,10 +74,26 @@ class Block: SKSpriteNode {
 
 extension Block {
     func setUpBlock(in scene: SKScene) {
-        let xPad: CGFloat = 200
+        if self.type == .air {
+            self.removeFromParent()
+            return
+        }
+        let xPad: CGFloat = (scene.frame.width - (CGFloat(levelDimensions.width) * self.frame.width)) / 2.0
         let yPad: CGFloat = 490
         let blockPos: (x:Int, y:Int) = self.getBlockPosition()
         self.position = CGPoint(x: xPad + CGFloat(blockPos.x) * self.frame.width, y: yPad + CGFloat(blockPos.y) * self.frame.height)
         scene.addChild(self)
+    }
+    
+    func updateBlock(in scene: SKScene) {
+        let xPad: CGFloat = (scene.frame.width - (CGFloat(levelDimensions.width) * self.frame.width)) / 2.0
+        let yPad: CGFloat = 490
+        let blockPos: (x:Int, y:Int) = self.getBlockPosition()
+        self.position = CGPoint(x: xPad + CGFloat(blockPos.x) * self.frame.width, y: yPad + CGFloat(blockPos.y) * self.frame.height)
+        if self is Player {
+            let beaver = self as! Player
+            let imageName = beaver.direction == .right ? "beaverRight" : "beaverLeft"
+            beaver.texture = SKTexture(imageNamed: imageName)
+        }
     }
 }
