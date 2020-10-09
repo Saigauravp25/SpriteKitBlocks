@@ -10,11 +10,17 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var sky: Sky!
     var groundNode = Ground()
+    var mountainNode = Mountain()
+    var oceanNode = Ocean()
+    var logo = Logo()
+    var victoryText = Victory()
+    var restartNode = Restart()
     var level: Level?
     
     override func didMove(to view: SKView) {
-        self.backgroundColor = UIColor(hex: 0xB3E5FC)
+        self.backgroundColor = UIColor(hex: 0x006994) //0xB3E5FC
         self.setupNodes()
         level = Level(levelData: self.getLevelData(), for: self)
         addSwipe()
@@ -46,13 +52,46 @@ class GameScene: SKScene {
             default:
                 print("Unrecognized Gesture Direction")
         }
+        let levelComplete = self.level?.checkLevelComplete()
+        if levelComplete! {
+            //Placeholder for now. Do action when level is complete.
+            self.victoryText.show()
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let touchedNode = atPoint(location)
+            if touchedNode.name == "Restart" {
+                self.setupNodes()
+                self.oceanNode.flood()
+                self.logo.show()
+                self.restartNode.hide()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // Change `2.0` to the desired number of seconds.
+                    self.logo.hide()
+                    self.setupNodes()
+                    self.oceanNode.unflood()
+                    self.restartNode.show()
+                    self.level = Level(levelData: self.getLevelData(), for: self)
+                }
+            }
+        }
     }
 }
 
 extension GameScene {
         
     func setupNodes() {
+        self.removeAllChildren()
+        self.sky = Sky(for: self)
+        self.sky.createStarLayers()
         self.groundNode.setupGround(self)
+        self.mountainNode.setupMountains(self)
+        self.oceanNode.setupOcean(self)
+        self.restartNode.setupRetryButton(self)
+        self.logo.setupLogo(self)
+        self.victoryText.setupText(self)
     }
     
     func getLevelData() -> LevelDataFormat {

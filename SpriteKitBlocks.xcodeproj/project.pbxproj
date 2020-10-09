@@ -20,6 +20,13 @@
 		4A5B7A6B252A5E4A00F113D4 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B7A68252A5E4A00F113D4 /* Level.swift */; };
 		4A5B7A6C252A5E4A00F113D4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B7A69252A5E4A00F113D4 /* Player.swift */; };
 		4A5B7A6D252A5E4A00F113D4 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B7A6A252A5E4A00F113D4 /* Block.swift */; };
+		4A78A597252FB8060047ACC9 /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78A596252FB8060047ACC9 /* Mountain.swift */; };
+		4A78A59A252FB98C0047ACC9 /* SKTexture+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78A599252FB98C0047ACC9 /* SKTexture+Ext.swift */; };
+		4A78A59D252FC27A0047ACC9 /* Ocean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78A59C252FC27A0047ACC9 /* Ocean.swift */; };
+		4A78A5A1252FCD840047ACC9 /* Restart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78A5A0252FCD840047ACC9 /* Restart.swift */; };
+		4A78A5A4252FD6D00047ACC9 /* Sky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78A5A3252FD6D00047ACC9 /* Sky.swift */; };
+		4A78A5A8252FDF000047ACC9 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78A5A7252FDF000047ACC9 /* Logo.swift */; };
+		4A78A5AB253001F60047ACC9 /* Victory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A78A5AA253001F60047ACC9 /* Victory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		4A5B7A68252A5E4A00F113D4 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4A5B7A69252A5E4A00F113D4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4A5B7A6A252A5E4A00F113D4 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		4A78A596252FB8060047ACC9 /* Mountain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
+		4A78A599252FB98C0047ACC9 /* SKTexture+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTexture+Ext.swift"; sourceTree = "<group>"; };
+		4A78A59C252FC27A0047ACC9 /* Ocean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ocean.swift; sourceTree = "<group>"; };
+		4A78A5A0252FCD840047ACC9 /* Restart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restart.swift; sourceTree = "<group>"; };
+		4A78A5A3252FD6D00047ACC9 /* Sky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sky.swift; sourceTree = "<group>"; };
+		4A78A5A7252FDF000047ACC9 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
+		4A78A5AA253001F60047ACC9 /* Victory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Victory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				4A5B7A5125298A1300F113D4 /* SKColor+Ext.swift */,
+				4A78A599252FB98C0047ACC9 /* SKTexture+Ext.swift */,
 			);
 			path = MyUtils;
 			sourceTree = "<group>";
@@ -120,9 +135,15 @@
 			isa = PBXGroup;
 			children = (
 				4A5B7A5F25299AB700F113D4 /* Ground.swift */,
+				4A78A5A3252FD6D00047ACC9 /* Sky.swift */,
+				4A78A596252FB8060047ACC9 /* Mountain.swift */,
+				4A78A59C252FC27A0047ACC9 /* Ocean.swift */,
 				4A5B7A6A252A5E4A00F113D4 /* Block.swift */,
 				4A5B7A68252A5E4A00F113D4 /* Level.swift */,
 				4A5B7A69252A5E4A00F113D4 /* Player.swift */,
+				4A78A5A0252FCD840047ACC9 /* Restart.swift */,
+				4A78A5A7252FDF000047ACC9 /* Logo.swift */,
+				4A78A5AA253001F60047ACC9 /* Victory.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -206,14 +227,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A78A5AB253001F60047ACC9 /* Victory.swift in Sources */,
+				4A78A597252FB8060047ACC9 /* Mountain.swift in Sources */,
 				4A5B7A66252A5E3100F113D4 /* Direction.swift in Sources */,
 				4A5B7A3625295D6F00F113D4 /* GameScene.swift in Sources */,
 				4A5B7A65252A5E3100F113D4 /* BlockType.swift in Sources */,
 				4A5B7A5225298A1300F113D4 /* SKColor+Ext.swift in Sources */,
+				4A78A5A4252FD6D00047ACC9 /* Sky.swift in Sources */,
+				4A78A5A8252FDF000047ACC9 /* Logo.swift in Sources */,
+				4A78A59A252FB98C0047ACC9 /* SKTexture+Ext.swift in Sources */,
 				4A5B7A3825295D6F00F113D4 /* GameViewController.swift in Sources */,
 				4A5B7A3025295D6F00F113D4 /* AppDelegate.swift in Sources */,
 				4A5B7A6B252A5E4A00F113D4 /* Level.swift in Sources */,
+				4A78A59D252FC27A0047ACC9 /* Ocean.swift in Sources */,
 				4A5B7A6D252A5E4A00F113D4 /* Block.swift in Sources */,
+				4A78A5A1252FCD840047ACC9 /* Restart.swift in Sources */,
 				4A5B7A6C252A5E4A00F113D4 /* Player.swift in Sources */,
 				4A5B7A6025299AB700F113D4 /* Ground.swift in Sources */,
 			);
@@ -357,7 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TP2EB4BYX;
 				INFOPLIST_FILE = SpriteKitBlocks/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,7 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TP2EB4BYX;
 				INFOPLIST_FILE = SpriteKitBlocks/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

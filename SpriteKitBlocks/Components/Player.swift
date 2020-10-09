@@ -9,7 +9,11 @@ import SpriteKit
 
 //Representation of the player in the game grid, special type of block
 class Player: Block {
-    var direction: Direction
+    var direction: Direction {
+        didSet {
+            self.updateBlock(in: self.skScene)
+        }
+    }
     var hasLog: Bool
     
     init(x:Int, y:Int, direction:Direction, hasLog:Bool, scene:SKScene, levelDim: (width:Int, height:Int)) {
