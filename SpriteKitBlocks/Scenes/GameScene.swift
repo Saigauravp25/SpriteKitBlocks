@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var sky: Sky!
     var groundNode = Ground()
@@ -18,12 +18,19 @@ class GameScene: SKScene {
     var victoryText = Victory()
     var restartNode = Restart()
     var level: Level?
+    let putDownSound = SKAction.playSoundFileNamed("putDown.wav", waitForCompletion: false)
     
     override func didMove(to view: SKView) {
+        self.physicsWorld.contactDelegate = self
+        self.view?.showsPhysics = false
         self.backgroundColor = UIColor(hex: 0x006994) //0xB3E5FC
         self.setupNodes()
         level = Level(levelData: self.getLevelData(), for: self)
         addSwipe()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        victoryText.run(self.putDownSound)
     }
     
     func addSwipe() {
@@ -55,7 +62,7 @@ class GameScene: SKScene {
         let levelComplete = self.level?.checkLevelComplete()
         if levelComplete! {
             //Placeholder for now. Do action when level is complete.
-            self.victoryText.show()
+            self.victoryText.drop()
         }
     }
     
@@ -68,7 +75,8 @@ class GameScene: SKScene {
                 self.oceanNode.flood()
                 self.logo.show()
                 self.restartNode.hide()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // Change `2.0` to the desired number of seconds.
+//                self.victoryText.hide()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
                     self.logo.hide()
                     self.setupNodes()
                     self.oceanNode.unflood()

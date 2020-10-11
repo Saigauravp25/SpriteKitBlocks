@@ -82,6 +82,9 @@ extension Block {
         let yPad: CGFloat = 490
         let blockPos: (x:Int, y:Int) = self.getBlockPosition()
         self.position = CGPoint(x: xPad + CGFloat(blockPos.x) * self.frame.width, y: yPad + CGFloat(blockPos.y) * self.frame.height)
+        // Physics
+        self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.texture!.size())
+        self.physicsBody?.isDynamic = false
         scene.addChild(self)
     }
     
