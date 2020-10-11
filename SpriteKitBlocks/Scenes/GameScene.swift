@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var restartNode = Restart()
     var level: Level?
     let putDownSound = SKAction.playSoundFileNamed("putDown.wav", waitForCompletion: false)
+    let floodSound = SKAction.playSoundFileNamed("flood.wav", waitForCompletion: false)
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -73,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if touchedNode.name == "Restart" {
                 self.setupNodes()
                 self.oceanNode.flood()
+                touchedNode.run(floodSound)
                 self.logo.show()
                 self.restartNode.hide()
 //                self.victoryText.hide()

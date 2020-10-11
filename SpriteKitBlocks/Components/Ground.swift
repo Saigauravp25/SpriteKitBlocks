@@ -27,8 +27,12 @@ extension Ground {
     func setupGround(_ scene: SKScene) {
         for i in -1...1 {
             let ground = Ground()
+            let ground2 = Ground()
+            ground2.zRotation = .pi
             ground.position = CGPoint(x: CGFloat(i) * ground.frame.size.width, y: 390.0)
+            ground2.position = CGPoint(x: CGFloat(i) * ground2.frame.size.width + 8.0, y: 390.0 - ground2.frame.size.height)
             scene.addChild(ground)
+            scene.addChild(ground2)
         }
     }
 }

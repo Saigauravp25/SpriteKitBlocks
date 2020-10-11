@@ -25,7 +25,9 @@ class Restart: SKSpriteNode {
 extension Restart {
     
     func setupRetryButton(_ scene: SKScene) {
-        self.position = CGPoint(x: scene.frame.size.width - 50, y: scene.frame.size.height - 2 * self.frame.size.height)
+        let xFactor = 0.98
+        let yFactor = (UIDevice.current.userInterfaceIdiom == .pad) ? 0.93 : 0.78
+        self.position = CGPoint(x: CGFloat(xFactor) * scene.frame.size.width, y: CGFloat(yFactor) * scene.frame.size.height)
         scene.addChild(self)
     }
     

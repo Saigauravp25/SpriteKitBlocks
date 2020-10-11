@@ -78,7 +78,7 @@ extension Block {
             self.removeFromParent()
             return
         }
-        let xPad: CGFloat = (scene.frame.width - (CGFloat(levelDimensions.width) * self.frame.width)) / 2.0
+        let xPad: CGFloat = (scene.frame.width - (CGFloat(levelDimensions.width) * self.frame.width)) / 2.0 + self.frame.size.width / 2.0
         let yPad: CGFloat = 490
         let blockPos: (x:Int, y:Int) = self.getBlockPosition()
         self.position = CGPoint(x: xPad + CGFloat(blockPos.x) * self.frame.width, y: yPad + CGFloat(blockPos.y) * self.frame.height)
@@ -89,7 +89,7 @@ extension Block {
     }
     
     func updateBlock(in scene: SKScene) {
-        let xPad: CGFloat = (scene.frame.width - (CGFloat(levelDimensions.width) * self.frame.width)) / 2.0
+        let xPad: CGFloat = (scene.frame.width - (CGFloat(levelDimensions.width) * self.frame.width)) / 2.0 + self.frame.size.width / 2.0
         let yPad: CGFloat = 490
         let blockPos: (x:Int, y:Int) = self.getBlockPosition()
         self.position = CGPoint(x: xPad + CGFloat(blockPos.x) * self.frame.width, y: yPad + CGFloat(blockPos.y) * self.frame.height)
